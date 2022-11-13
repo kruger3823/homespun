@@ -1,0 +1,145 @@
+{% load static %}
+
+<!doctype html>
+<html lang="zxx">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>homespun
+	</title>
+	<!-- Template CSS -->
+	<link rel="stylesheet" href="/static/assets/css/style-starter.css">
+	<!-- Template CSS -->
+	<link href="//fonts.googleapis.com/css?family=Josefin+Sans:400,400i,500,600,700&display=swap"
+		rel="stylesheet">
+	<link href="//fonts.googleapis.com/css?family=Lato:300,400,400i,700&display=swap" rel="stylesheet">
+	<!-- Template CSS -->
+</head>
+
+<body>
+	<!--w3l-header-->
+	<section class="w3l-top-header-content">
+		<div class="hny-top-menu">
+			<div class="container">
+				
+			</div>
+		</div>
+	</section>
+	<!--//top-header-content-->
+	<header class="w3l-header-nav">
+		<!--/nav-->
+		<nav class="navbar navbar-expand-lg navbar-light fill px-lg-0 py-0 px-3">
+			<div class="container">
+				<h1><a class="navbar-brand" href="{% url 'index' %}">Home<span>Spun</span></a></h1>
+				<!-- if logo is image enable this   
+						<a class="navbar-brand" href="#index.html">
+							<img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+						</a> -->
+				<button class="navbar-toggler collapsed" type="button" data-toggle="collapse"
+					data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<!-- <span class="navbar-toggler-icon"></span> -->
+					<span class="fa icon-expand fa-bars"></span>
+					<span class="fa icon-close fa-times"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item active">
+							<a class="nav-link" href="{% url 'index' %}">Home</a>
+						</li>
+						{% if user.is_authenticated %}
+						{% if user.is_superuser %}
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+						</li>
+						{% endif %}
+                        <li class="nav-item">
+							<a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a>
+						</li>
+
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'user_logout' %}">Logout</a>
+						</li>
+						{% if user.shop %}
+						<!-- <li class="nav-item">
+							<a class="nav-link" href="{% url 'volunteer_register' %}">Add Employees</a>
+						</li> -->
+						{% endif %}
+
+						{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'registrations' %}">Register</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="{% url 'user_login' %}">Login</a>
+						</li>
+						{% endif %}
+					</ul>
+					
+				</div>
+			</div>
+		</nav>
+		<!--//nav-->
+	</header>
+
+
+		
+ {% comment %} {% block content %}
+{% if user.shop %} {% endcomment %}
+ {% comment %} {% endcomment %} 
+		<div id="page-wrapper" style="background-color: wheat;padding-top: 3em;padding-bottom: 2em;">
+			<div class="main-page">
+				<div class="forms">
+					<h3 class="title1"></h3>
+						<h4>Stock Table </h4>
+						{% comment %} <div>{% if messages %} {% for mess in messages %}
+							<b style="color: brown;">{{mess}}</b> {% endfor %} {% endif %}</div>
+					</div> {% endcomment %}
+                    <form method="POST">
+                        {% csrf_token %}
+						<table class="table">
+							<thead style="background-color: darkcyan;">
+								<tr>
+								<th>List Number</th>
+								  
+								  <th>Name</th>
+								  <th>Category</th>
+                                  <th>Quantity</th>
+                                  
+                                  <th>Number Of Stock</th>
+								  
+								 
+								</tr>
+							</thead>
+							{% for i in cr %}
+							<tbody style="background-color: slategrey;font-size: 15px;">
+								<tr>
+									<td class="serial">{{ forloop.counter }}</td>
+
+								  
+								  <td>{{i.name}}</td>
+                                  <td>{{i.cate}}</td>
+                                  <td>{{i.qua}}</td>
+                                  <td>{{i.num}}</td>
+                                  {% comment %} <td><a href="{{l.image.url}}"><img src="{{l.image.url}}" width="40px" height="40px"></a></td>
+                                  <td>{{l.price}}</td>
+                                  
+                                  <td>{{l.quantity}}</td>
+								  <td><a href="{% url 'update_product' l.id %}" style="color: red;">Update Product</a></td>
+								  <td><a href="{% url 'delete_product' l.id%}" style="color: red;" onclick="return confirm('are u sure d u want to delete this record')">Delete</a></td> {% endcomment %}
+
+								</tr>
+								
+							</tbody>
+							{% endfor %}
+						</table>
+					</div>
+				</div>
+	
+					
+			</div>
+		</div>
+	

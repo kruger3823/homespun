@@ -1,0 +1,30 @@
+{% extends 'index.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for item in data %}
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src={{item.proof.url}} alt="Card image cap" style="max-height: 200px;">
+            <div class="card-body">
+                <h5 class="card-title">{{item.user.username}} - {{item.category.servicer_category_name}}</h5>
+                <p class="card-text">
+                    He is {{item.availability_status}} for work
+                </p>
+                <p class="card-text">
+                    Location: {{item.location}}
+                </p>
+                <p class="card-text">
+                    Phone number: {{item.phone}}
+                </p>
+                <p class="card-text">
+                    Qualification: {{item.qualification}}
+                <a href="{% url 'servicer_booking' item.id %}" class="btn btn-danger">BOOK</a>
+            </div>
+        </div>
+        {% empty %}
+        <h1>No Workers available</h1>
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock content %}

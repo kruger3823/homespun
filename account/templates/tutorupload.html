@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Create a Post </title>
+</head>
+
+
+
+
+
+
+
+{% extends 'index.html' %}{% load crispy_forms_tags %}
+{% block content %} 
+<div style="background-color: rgba(154, 53, 184, 0.24);padding-top: 2em;padding-bottom: 2em;">
+    <center>
+
+<h1 style="font-weight: bold;">UPLOAD VIDEOS</h1>
+<body>
+<form action="" method="POST">
+    {% csrf_token %}
+    filename: <input type="text" name="filename"/><br/>
+    description: <br/>
+    <textarea cols="35" rows="8" name="description">
+    </textarea><br/>
+    file: <input type="file" name="file"/><br/>
+    <input type="submit" value="Post"/>
+    </form>
+    </body>
+    
+    </html>
+    
+
+
+
+
+
+
+</center>
+</div>
+
+{% endblock %}

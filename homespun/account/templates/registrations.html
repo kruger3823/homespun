@@ -1,0 +1,15 @@
+{% extends 'index.html' %}
+
+
+{% block content %}
+<div style="background-color: #9cbfbf;padding-top: 3em;padding-left: 3em;padding-bottom: 3em;">
+
+<a href="{% url 'shop_register' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="margin-right: 2em;">SELLERS REGISTER</a>
+<a href="{% url 'customer_register' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="margin-right: 2em;">CUSTOMER REGISTER</a>
+<a href="{% url 'tutor_register' %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true" style="margin-right: 2em;">TUTOR REGISTER</a>
+
+
+
+
+</div>
+{% endblock %}

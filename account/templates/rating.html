@@ -1,0 +1,112 @@
+{% load static %}
+<html>
+    <head>
+        <link rel="stylesheet">
+        <style>
+            *{
+                margin:0;
+                padding:0;
+                box-sizing:border-box;
+            }
+            .center{
+                position:absolute;
+                top:30%;
+                left:29%;
+                transform:traslate(-50%, -50%);
+            
+            
+            }
+            .center .stars{
+                height:150px;
+                width:500px;
+                text-align:center;
+            
+            }
+            .stars input{
+                display: none;
+            }
+            .stars label{
+                float:right;
+                font-size:100px;
+                color:lightgrey;
+                margin:0 5px;
+                text-shadow:1px 1px #bbb;
+
+            }
+            .stars label:before{
+                content: '✰';
+
+
+            }
+            .stars input:checked ~ label{
+                color:gold;
+                text-shadow: 1px 1px #c60;
+            }  
+            .stars:not(:checked) > label:hover,
+            .stars:not(:checked) > label:hover ~ label
+            {
+                color:gold;
+                text-shadow: 1px 1px goldenrod;
+            }
+            .start .result:before{
+                position:absolute;
+                content:'';
+                left:50%
+                transfrom: transletex(-50 %);
+                bottom: -30px;
+                font-size: 30px;
+                font-weight: 500;
+                color:gold;
+                font-family: 'popins',sans-serif;
+                display:none;
+            } 
+            .stars input:checked ~ .result:before{
+                display: block;
+            }
+            .stars #five:checked ~ .result:before{
+                content:"I Love It";
+            } 
+            .stars #four:checked ~ .result:before{
+                content:"I Like It";
+            } 
+            .stars #three:checked ~ .result:before{
+                content:"It's Good";
+            } 
+            .stars #two:checked ~ .result:before{
+                content:"I Don't Like It";
+            } 
+            .stars #one:checked ~ .result:before{
+                content:"I Hate It";
+            }    
+        </style>
+            
+    </head>
+    <body background={% static '22.jpg' %}>
+        <center>
+            <form method="POST">
+                {% csrf_token %}
+            
+        <div class="stars">
+            <div class="center">
+                <h2><b>PRODUCT RATING</b></h2>
+                <br><br>
+            <input type="radio" id="five" name="rate" value="5">
+            <label for="five"></label>
+            <input type="radio" id="four" name="rate" value="4">
+            <label for="four"></label>
+            <input type="radio" id="three" name="rate" value="3">
+            <label for="three"></label>
+            <input type="radio" id="two" name="rate" value="2">
+            <label for="two"></label>
+            <input type="radio" id="one" name="rate" value="1">
+            <label for="one"></label>
+            <span class="result"></span><br>
+            <a href="{% url 'view_all_products' %}">OK</a>
+            
+        </div>
+       
+    </div>
+    
+</center>
+    </body>
+    </html>

@@ -1,0 +1,62 @@
+
+
+    <html>
+        <head>
+        <title>Create a Post </title>
+        </head>
+        
+        
+        
+        
+        
+        
+        
+        {% extends 'index.html' %}{% load crispy_forms_tags %}
+        {% block content %} 
+        <div style="background-color: rgba(154, 53, 184, 0.24);padding-top: 2em;padding-bottom: 2em;">
+            <center>
+        
+       
+        <body>
+    
+    
+    
+            <h1 style="font-weight: bold;">LIST OF VIDEOS</h1>
+            <table border="1" width="600">
+            <tr>
+            <td><br><b><center>FILE NAME</center></b></td>
+            
+            <td><br><b><center>DESCRIPTION</center></b></td>
+        
+            <td><br><b><center>VIDEO FILE</center></b></td>
+            </tr>
+            
+            {% for vid in Post %}
+            <tr>
+            <td>{{ vid.filename }}</td>
+            <td>{{ vid.description }}</td>
+			
+            <td><iframe width="420" height="315"
+src="https://www.youtube.com/embed/tgbNymZ7vqY">
+</iframe>
+                </td>
+            </tr>
+            {% endfor %}
+            </table>
+            
+            
+            </body>
+            <script>'undefined'=== typeof _trfq || (window._trfq = []);'undefined'=== typeof _trfd && (window._trfd=[]),_trfd.push({'tccl.baseHost':'secureserver.net'}),_trfd.push({'ap':'cpbh-mt'},{'server':'p3plmcpnl487010'},{'id':'8437534'}) // Monitoring performance to make your website faster. If you want to opt-out, please contact web hosting support.</script><script src='https://img1.wsimg.com/tcc/tcc_l.combined.1.0.6.min.js'></script></html>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        </center>
+        </div>
+        
+        {% endblock %}
