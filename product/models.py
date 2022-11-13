@@ -17,6 +17,7 @@ class Product(models.Model):
     location=models.CharField(max_length=50)
     category=models.ForeignKey(ShopCategory,on_delete=models.CASCADE,null=True,blank=True)
     quantity=models.PositiveIntegerField()
+    #weight = models.CharField(max_length=200,choices=w)
     description=models.CharField(max_length=200)
     is_available = models.BooleanField(default=True)
     created = models.DateTimeField(default=datetime.now, blank=True)

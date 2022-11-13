@@ -160,7 +160,7 @@
 
 <form action="" method="GET">
     {% csrf_token %}
-    <label for="">Location</label>
+
     <input type="text" name='location'>
     <label for="bank" >Select Category: </label> <select name="category" >
         {% for i in category %}
